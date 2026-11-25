@@ -1,0 +1,1154 @@
+/* ==========================================
+   1. CSS 변수 정의 (:root & 다크모드)
+   ========================================== */
+:root {
+  /* 라이트 모드 색상 */
+  --bg-color: #ffffff;
+  --bg-alt-color: #f8f9fa;
+  --text-color: #212529;
+  --text-muted: #6c757d;
+  --primary-color: #0d6efd;
+  --primary-hover: #0b5ed7;
+  --card-bg: #ffffff;
+  --border-color: #dee2e6;
+  --shadow-color: rgba(0, 0, 0, 0.075);
+  --shadow-hover: rgba(0, 0, 0, 0.15);
+
+  /* 타이포그래피 및 간격 */
+  --font-main: 'Noto Sans KR', sans-serif;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+[data-theme="dark"] {
+  /* 다크 모드 색상 */
+  --bg-color: #121212;
+  --bg-alt-color: #1e1e1e;
+  --text-color: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --primary-color: #375a7f;
+  --primary-hover: #2b4764;
+  --card-bg: #1d1d1d;
+  --border-color: #333333;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --shadow-hover: rgba(0, 0, 0, 0.7);
+}
+
+/* ==========================================
+   2. 기본 초기화 (Reset)
+   ========================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+body {
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+section {
+  padding: var(--spacing-xl) var(--spacing-md);
+}
+
+section:nth-of-type(even) {
+  background-color: var(--bg-alt-color);
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+/* ==========================================
+   3. 모바일 퍼스트 레이아웃 (기본값)
+   ========================================== */
+
+/* 네비게이션 헤더 */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+  box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  background-color: transparent !important; /* 안쪽 박스의 색상을 투명하게 변경 */
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* 모바일 메뉴 숨김 처리 및 스타일 */
+.nav-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+  display: none; /* 기본 숨김 */
+  flex-direction: column;
+  padding: var(--spacing-md) 0;
+  text-align: center;
+}
+
+.nav-menu.active {
+  display: flex; /* 햄버거 클릭 시 활성화 */
+}
+
+.nav-menu li {
+  margin: var(--spacing-md) 0;
+}
+
+.nav-menu a:hover {
+  color: var(--primary-color);
+}
+
+/* 햄버거 버튼 기본 노출 */
+.hamburger {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+/* 메인 콘텐츠 영역 상단 여백 (고정 헤더 대응) */
+main {
+  margin-top: 60px;
+}
+
+/* Hero 섹션 */
+#hero {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, var(--bg-color), var(--bg-alt-color));
+}
+
+#hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+}
+
+#hero p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-lg);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* About & Contact 일반 스타일 */
+#about p, #contact p {
+  max-width: 700px;
+  margin: 0 auto var(--spacing-lg) auto;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* Skills 목록 */
+#skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-md);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#skills li {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.25rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+/* Projects Grid 레이아웃 */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: var(--spacing-lg);
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px var(--shadow-hover);
+}
+
+.project-card h3 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.project-card p {
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-md);
+  font-size: 0.95rem;
+}
+
+/* Contact 목록 */
+#contact ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* 푸터 */
+footer {
+  text-align: center;
+  padding: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-alt-color);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ==========================================
+   4. 반응형 미디어 쿼리 (태블릿: 768px 이상)
+   ========================================== */
+@media (min-width: 768px) {
+  section {
+    padding: var(--spacing-xl) var(--spacing-xl);
+  }
+
+  /* 햄버거 버튼 숨김 및 네비게이션 가로 배열 */
+  .hamburger {
+    display: none;
+  }
+
+  .nav-menu {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    background-color: transparent;
+    border-bottom: none;
+    padding: 0;
+  }
+
+  .nav-menu li {
+    margin: 0 0 0 var(--spacing-lg);
+  }
+
+  /* Contact 목록 가로 전환 */
+  #contact ul {
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--spacing-lg);
+  }
+}
+
+/* ==========================================
+   5. 반응형 미디어 쿼리 (데스크톱: 1024px 이상)
+   ========================================== */
+@media (min-width: 1024px) {
+  #hero h1 {
+    font-size: 3.5rem;
+  }
+  
+  .project-grid {
+    gap: var(--spacing-xl);
+  }
+}
+
+
+
+
+/* 폼 스타일 레이아웃 */
+.contact-container {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  padding: var(--spacing-lg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: inherit;
+  transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* 에러 메시지 스타일 */
+.error-msg {
+  display: block;
+  color: #dc3545; /* 부드러운 빨간색 */
+  font-size: 0.85rem;
+  margin-top: 4px;
+  min-height: 1.25rem; /* 메시지가 없을 때도 영역 유지하여 레이아웃 흔들림 방지 */
+}
+
+/* 성공 메시지 상자 */
+.success-box {
+  display: none;
+  margin-top: var(--spacing-md);
+  padding: 1rem;
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.success-box.show {
+  display: block;
+}
+
+/* 다크모드 대응 성공 상자 */
+[data-theme="dark"] .success-box {
+  background-color: #0f5132;
+  color: #d1e7dd;
+  border-color: #0f5132;
+}
+
+
+
+/* 프로젝트 필터 메뉴 스타일 */
+.project-filters {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border-color: var(--primary-color);
+}
+
+/* 기술 스택 태그 스타일 */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: var(--spacing-md);
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  background-color: var(--bg-alt-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-muted);
+}
+
+/* 개별 카드 내 링크 버튼 스타일 */
+.btn-project-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+}
+
+.btn-project-link:hover {
+  border-color: var(--primary-color);
+}
+
+
+
+/* 상태 메시지 및 로딩 영역 공통 레이아웃 */
+.status-message {
+  grid-column: 1 / -1; /* Grid 레이아웃 내에서 전체 가로 너비를 다 쓰도록 고정 */
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+  color: var(--text-muted);
+}
+
+.status-message p {
+  margin-top: var(--spacing-md);
+  font-size: 1.1rem;
+}
+
+#btn-retry {
+  margin-top: var(--spacing-md);
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+}
+
+/* 🔄 회전하는 로딩 애니메이션 스피너 */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-color);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+/* ==========================================
+   다크 모드 테마 변수 강제 적용 및 전환 효과
+   ========================================== */
+[data-theme="dark"] body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* 다크 모드일 때 헤더 배경색 및 경계선 변경 */
+[data-theme="dark"] header {
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* 스크롤 시 헤더 스타일 변경 대응 */
+header.scrolled {
+  background-color: var(--bg-alt-color) !important;
+  box-shadow: 0 4px 12px var(--shadow-hover);
+}
+
+/* 다크 모드일 때 모바일 메뉴 배경색 변경 */
+[data-theme="dark"] .nav-menu {
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* 다크 모드일 때 개별 요소들의 색상이 변수값을 즉시 따르도록 보장 */
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .contact-container,
+[data-theme="dark"] #skills li {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+/* 다크 모드 카드 호버 효과 강조 */
+[data-theme="dark"] .project-card:hover {
+  box-shadow: 0 10px 20px var(--shadow-hover);
+}
+
+/* 다크 모드 폼 입력창 스타일 보완 */
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+  background-color: var(--bg-alt-color);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+/* 테마 전환 시 화면 전체가 뚝뚝 끊기지 않고 부드럽게 바뀌도록 애니메이션 추가 */
+body, header, .project-card, .contact-container, input, textarea, a, p, h1, h2, h3 {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+/* ==========================================
+   1. 네비게이션 헤더 스타일 (기본 & 스크롤 상태)
+   ========================================== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  background-color: #ffffff; /* 라이트모드 기본 배경색 */
+  border-bottom: 1px solid #dee2e6;
+  z-index: 1000;
+  /* 색상과 그림자가 부드럽게 바뀌도록 transition 설정 */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+/* [중요] 스크롤 60px 이상 내렸을 때 자바스크립트에 의해 추가되는 클래스 */
+header.scrolled {
+  background-color: #f8f9fa; /* 연한 회색 배경으로 변경 */
+  padding: 12px 0; /* 헤더 두께를 살짝 줄여서 스타일리시하게 변경 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 입체감 있는 그림자 추가 */
+  border-bottom-color: transparent;
+}
+
+/* ==========================================
+   2. 스크롤 탑 버튼 스타일 (기본 숨김 & 스크롤 상태)
+   ========================================== */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: #0d6efd; /* 기본 파란색 포인트 컬러 */
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  
+  /* 초기 상태: 투명하게 완전히 숨기고 아래로 20px 내려놓음 */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  /* 등장 시 스르륵 부드럽게 나타나도록 설정 */
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.2s ease;
+}
+
+/* [중요] 스크롤 300px 이상 내렸을 때 자바스크립트에 의해 추가되는 클래스 */
+.scroll-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0); /* 제자리로 올라오면서 등장 */
+}
+
+/* 마우스 호버(올렸을 때) 시 시각 효과 */
+.scroll-top-btn:hover {
+  background-color: #0b5ed7;
+  transform: translateY(-3px); /* 뜬 상태에서 한 번 더 통통 튀는 효과 */
+}
+
+
+
+
+/* 기본 스타일 변수 설정 */
+:root {
+  --primary-color: #0d6efd;
+  --text-color: #212529;
+  --text-muted: #6c757d;
+  --card-bg: #ffffff;
+  --border-color: #dee2e6;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+/* 초기화 */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  color: var(--text-color);
+  background-color: #f8f9fa;
+  line-height: 1.6;
+}
+
+ul { list-style: none; }
+a { text-decoration: none; color: inherit; }
+
+/* ==========================================
+   1. 네비게이션: Flexbox 레이아웃 구현
+   ========================================== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex; /* Flexbox 활성화 */
+  justify-content: space-between; /* 로고는 왼쪽 끝, 메뉴는 오른쪽 끝 정렬 */
+  align-items: center; /* 가로선 중심 일치 (수직 중앙 정렬) */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem var(--spacing-md, 1.5rem);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* 메뉴 가로 배열을 위한 Flexbox 중첩 */
+.nav-menu ul {
+  display: flex;
+  gap: 1.5rem; /* 메뉴 아이템 간의 간격 균등 분배 */
+}
+
+.nav-menu a:hover {
+  color: var(--primary-color);
+}
+
+/* ==========================================
+   2. Projects 카드: Grid 반응형 레이아웃 구현
+   ========================================== */
+#projects {
+  max-width: 1200px;
+  margin: 100px auto 0 auto; /* 헤더 고정 높이 대응 마진 */
+  padding: 4rem 1.5rem;
+}
+
+#projects h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.project-grid {
+  display: grid; /* Grid 활성화 */
+  /* auto-fit: 공간이 남으면 카드를 한 줄에 꽉 차게 채움 */
+  /* minmax(280px, 1fr): 카드의 최소 너비는 280px이며, 화면이 커지면 남은 비율(1fr)대로 넓어짐 */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem; /* 카드와 카드 사이의 상하좌우 간격 고정 */
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 시각 효과: 호버 시 카드 부양 및 음영 강조 */
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+}
+
+.project-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.project-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-project-link {
+  display: inline-block;
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.btn-project-link:hover {
+  text-decoration: underline;
+}
+
+
+
+/* ==========================================================================
+   [기본 스타일] 모바일 퍼스트 레이아웃 (767px 이하 스마트폰 화면)
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+ul { list-style: none; }
+a { text-decoration: none; color: inherit; }
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dee2e6;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #0d6efd;
+}
+
+/* 모바일 햄버거 버튼: 기본 상태에서 노출 */
+.hamburger {
+  display: block;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #212529;
+}
+
+/* [모바일] 네비게이션 메뉴 기본 상태: 화면에서 완전 숨김 */
+.nav-menu {
+  position: absolute;
+  top: 100%; /* 헤더 바로 밑에 밀착 배치 */
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dee2e6;
+  
+  /* 초기 숨김 처리 */
+  display: none; 
+  flex-direction: column;
+  padding: 1rem 0;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* [자바스크립트 연동] 햄버거 메뉴 클릭 시 활성화되어 아래로 펼쳐짐 */
+.nav-menu.active {
+  display: flex;
+}
+
+.nav-menu li {
+  padding: 0.75rem 0;
+}
+
+
+/* ==========================================================================
+   [반응형 분기점] 태블릿 레이아웃 (768px 이상 환경)
+   ========================================================================== */
+@media (min-width: 768px) {
+  /* 1) 모바일용 햄버거 버튼 숨김 */
+  .hamburger {
+    display: none;
+  }
+
+  /* 2) 메뉴 목록을 숨김 해제하고 가로 형태(Flex)로 재정렬 */
+  .nav-menu {
+    position: static; /* 절대 좌표 해제 */
+    display: flex; /* 숨김 해제 */
+    width: auto;
+    background-color: transparent;
+    border-bottom: none;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  /* 메뉴 글자들을 수평 가로 방향으로 정렬 */
+  .nav-menu ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem; /* 태블릿 메뉴 간격 설정 */
+  }
+
+  .nav-menu li {
+    padding: 0;
+  }
+
+  .nav-menu a:hover {
+    color: #0d6efd;
+  }
+}
+
+
+/* ==========================================================================
+   [반응형 분기점] 데스크톱 레이아웃 (1024px 이상 환경)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .nav-container {
+    padding: 1.25rem 2rem; /* 화면이 아주 넓은 PC 환경이므로 여백 확장 */
+  }
+
+  .logo {
+    font-size: 1.5rem; /* 로고 크기 확대 */
+  }
+
+  .nav-menu ul {
+    gap: 2.5rem; /* 데스크톱 메뉴 간 간격을 조금 더 여유롭게 배치 */
+  }
+}
+
+
+/* ==========================================
+   1. 색상 및 효과 관련 CSS 변수 정의
+   ========================================== */
+:root {
+  --primary-color: #0d6efd;
+  --primary-hover: #0b5ed7;
+  --card-bg: #ffffff;
+  
+  /* [라이트 모드 그림자] 은은하고 부드러운 회색 음영 */
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --card-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
+  
+  /* 전환 속도 공통 변수 */
+  --transition-normal: 0.3s ease;
+  --transition-fast: 0.2s ease;
+}
+
+[data-theme="dark"] {
+  --primary-color: #375a7f;
+  --primary-hover: #2b4764;
+  --card-bg: #1d1d1d;
+  
+  /* [다크 모드 그림자] 어두운 배경에 맞춰 더 깊고 짙은 음영 처리 */
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================
+   2. Projects 카드 스타일 (그림자 및 호버 효과)
+   ========================================== */
+.project-card {
+  background-color: var(--card-bg);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  
+  /* [요구사항 2] 카드에 입체적인 box-shadow 적용 */
+  box-shadow: var(--card-shadow);
+  
+  /* [요구사항 1] 호버 시 변화할 속성(그림자, 위치)에 부드러운 transition 부여 */
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  will-change: transform; /* 브라우저 렌더링 성능 최적화 */
+}
+
+/* 카드 마우스 호버(Hover) 시 시각 효과 */
+.project-card:hover {
+  /* 카드 위치를 위로 6px 만큼 자연스럽게 띄움 */
+  transform: translateY(-6px);
+  /* 그림자의 크기와 흐림 정도를 키워 공중에 뜬 느낌(심도) 연출 */
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* ==========================================
+   3. 일반 버튼 스타일 (호버 효과)
+   ========================================== */
+.btn-primary, .filter-btn, .scroll-top-btn {
+  /* 버튼의 배경색, 크기 등이 바뀔 때 뚝뚝 끊기지 않도록 전환 설정 */
+  transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* 메인 포인트 버튼 호버 효과 */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  /* 마우스를 올리면 변수 정의된 더 짙은 색상으로 변경 */
+  background-color: var(--primary-hover);
+  /* 버튼이 살짝 눌리거나 뜨는 시각적 반응 제공 */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
+}
+
+/* 스크롤 탑 버튼 호버 효과 */
+.scroll-top-btn:hover {
+  transform: scale(1.05) translateY(-3px); /* 크기가 5% 커지면서 위로 살짝 통통 튀는 효과 */
+}
+
+
+/* ==========================================
+   헤더 스크롤 배경색 강제 적용 (우선순위 패치)
+   ========================================== */
+
+/* 1. 라이트 모드일 때 스크롤 배경색 가시화 */
+#main-header.scrolled {
+  background-color: #f8f9fa !important; /* 브라우저 기본 흰색을 무시하고 연회색 강제 적용 */
+  border-bottom: 1px solid #dee2e6 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important; /* 입체감 있는 그림자 부여 */
+  padding: 10px 0 !important; /* 두께도 슬림하게 변경 */
+}
+
+/* 2. 다크 모드([data-theme="dark"]) 환경을 쓸 때 스크롤 배경색 가시화 */
+[data-theme="dark"] #main-header.scrolled {
+  background-color: #1e1e1e !important; /* 어두운 차콜색 강제 적용 */
+  border-bottom: 1px solid #333333 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 3. 배경색이 바뀔 때 뚝뚝 끊기지 않고 0.3초 동안 스르륵 변하게 설정 */
+#main-header {
+  transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+
+/* ==========================================
+   Apple / Webkit 엔진용 스크롤 헤더 패치 
+   ========================================== */
+
+/* 1. 라이트 모드일 때 스크롤 헤더 배경 강제 고정 */
+#main-header.scrolled {
+  background: #f8f9fa !important; /* background-color 대신 background로 광범위 덮어쓰기 */
+  padding: 10px 0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 2. 다크 모드일 때 스크롤 헤더 배경 강제 고정 */
+[data-theme="dark"] #main-header.scrolled {
+  background: #1e1e1e !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 3. [가장 중요] 헤더 안쪽 박스가 흰색 배경을 쥐고 있으면 겉이 바뀌어도 안 보이므로 투명하게 강제 통일 */
+#main-header.scrolled .nav-container,
+#main-header.scrolled .nav-menu {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* 4. 부드러운 애니메이션 복구 */
+#main-header {
+  transition: all 0.3s ease-in-out !important;
+}
+
+
+/* ==========================================
+   사파리(Safari) 브라우저 전용 초강력 스크롤 패치
+   ========================================== */
+
+/* 1. 라이트 모드 사파리 스크롤 배경 강제 주입 */
+#main-header.scrolled {
+  background: #f8f9fa !important;
+  background-color: #f8f9fa !important;
+  padding: 10px 0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  
+  /* [사파리 전용 핵심] 사파리 엔진이 배경색 변화를 즉시 화면에 그리도록 강제 명령 */
+  transform: translateZ(0); 
+  -webkit-transform: translateZ(0);
+}
+
+/* 2. 다크 모드 사파리 스크롤 배경 강제 주입 */
+[data-theme="dark"] #main-header.scrolled {
+  background: #1e1e1e !important;
+  background-color: #1e1e1e !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* 3. 투명도 구멍 방지 패치 */
+#main-header.scrolled .nav-container,
+#main-header.scrolled .nav-menu,
+#main-header.scrolled ul,
+#main-header.scrolled li {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* ==========================================
+   사파리(Safari) 그래픽 엔진 강제 리페인트 패치
+   ========================================== */
+
+/* 1. 사파리 엔진이 스크롤 시 헤더 레이어를 강제로 독립시켜 다시 그리도록 그래픽 가속 부여 */
+#main-header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999 !important; /* 다른 어떤 요소보다 무조건 위에 배치 */
+  
+  /* [사파리 그래픽 버그 해결 핵심] 하드웨어 가속을 켜서 사파리가 배경을 얼리지 못하게 방지 */
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* 2. 스크롤 되었을 때 배경색을 일반 주입이 아닌 사파리가 강제 인지하도록 재지정 */
+#main-header.scrolled {
+  background: #fff9da !important; /* 라이트 모드 연회색 */
+  background-color: #fffcdc !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  
+  /* 렌더링 강제 리프레시 유도 코드 */
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+/* 3. 다크 모드용 사파리 강제 주입 */
+[data-theme="dark"] #main-header.scrolled {
+  background: #c9c7ff !important; /* 다크 모드 어두운색 */
+  background-color: #bdc2ff !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 4. [매우 중요] 헤더 안쪽 자식 요소들의 하얀색 배경이 겉의 색상을 가리지 못하도록 완전히 박멸 */
+#main-header *,
+#main-header .nav-container,
+#main-header .nav-menu,
+#main-header ul,
+#main-header li {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+
+/* 상태 메시지 및 공통 로딩 구역 레이아웃 */
+.status-message {
+  grid-column: 1 / -1; /* CSS Grid 레이아웃 환경 내에서 카드가 깨지지 않고 가로 너비를 전체 다 채우도록 고정 */
+  text-align: center;
+  padding: 3rem 0;
+  color: var(--text-muted, #6c757d);
+}
+
+.status-message p {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+/* 🔄 무한 회전하는 원형 그래픽 스피너 */
+.spinner {
+  width: 44px;
+  height: 44px;
+  border: 4px solid var(--border-color, #dee2e6);
+  border-top-color: var(--primary-color, #0d6efd); /* 포인트 컬러로 윗부분만 색상 칠함 */
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: spin 0.85s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 기술 스택 전용 하위 미니 배지 태그 */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 1rem 0;
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  background-color: var(--bg-alt-color, #f8f9fa);
+  border: 1px solid var(--border-color, #dee2e6);
+  border-radius: 4px;
+}
