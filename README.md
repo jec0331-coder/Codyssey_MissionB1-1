@@ -70,18 +70,20 @@ HTML5, CSS3, Vanilla JavaScript(ES6+)만을 사용하여 제작한 반응형 개
 ---
 
 ## 스크린샷
+
+### 1.모바일 비율
 <img width="577" height="881" alt="모바일" src="https://github.com/user-attachments/assets/0d034856-1ddd-48b2-ac7e-36dfac678f41" />
-
+### 2.웹 비율
 <img width="1440" height="880" alt="웹비율" src="https://github.com/user-attachments/assets/c517eeac-96e1-4bfc-b6bf-36dc9bcb309d" />
-
+### 3.다크 모드
 <img width="579" height="878" alt="모바일 다크" src="https://github.com/user-attachments/assets/2e9f0809-526a-4655-98a3-8f52e38df822" />
-
+### 4.about, skill 섹션
 <img width="576" height="876" alt="about, skill 섹션" src="https://github.com/user-attachments/assets/b127e787-0a9a-49c7-9ee6-fe2c7a59f107" />
-
+### 5.projects 섹션
 <img width="575" height="877" alt="projects 섹션" src="https://github.com/user-attachments/assets/b5eb6fdf-5545-418c-bb4c-5846ca517929" />
-
+### 6.contact 섹션
 <img width="574" height="879" alt="contact 섹션" src="https://github.com/user-attachments/assets/9cc6be2b-258b-4e20-a7e7-7adbe024f286" />
-
+### footer
 <img width="576" height="879" alt="footer" src="https://github.com/user-attachments/assets/f030497d-10ef-4674-a843-4f830400af3e" />
 
 
