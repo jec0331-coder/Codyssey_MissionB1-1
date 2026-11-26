@@ -6,7 +6,7 @@ HTML5, CSS3, Vanilla JavaScript(ES6+)만을 사용하여 제작한 반응형 개
 ---
 
 ## 🔗 배포 URL (Live Demo)
-* **GitHub Pages:** `https://jec0331-coder.github.io/CodysseyMissionB1-1/`
+* **GitHub Pages:** `https://jec0331-coder.github.io/Codyssey_MissionB1-1/`
 
 ---
 
