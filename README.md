@@ -87,7 +87,8 @@ HTML5, CSS3, Vanilla JavaScript(ES6+)만을 사용하여 제작한 반응형 개
 <img width="575" height="877" alt="projects 섹션" src="https://github.com/user-attachments/assets/b5eb6fdf-5545-418c-bb4c-5846ca517929" />
 
 ### 6.contact 섹션
-<img width="574" height="879" alt="contact 섹션" src="https://github.com/user-attachments/assets/9cc6be2b-258b-4e20-a7e7-7adbe024f286" />
+<img width="576" height="876" alt="contact 섹션" src="https://github.com/user-attachments/assets/fd6887ab-c8dd-4621-bf88-266c91655c93" />
+
 
 ### footer
 <img width="576" height="879" alt="footer" src="https://github.com/user-attachments/assets/f030497d-10ef-4674-a843-4f830400af3e" />
